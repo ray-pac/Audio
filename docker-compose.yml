@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  audio-separator:
+    build: .
+    container_name: audio_isolation_app
+    ports:
+      - "7860:7860"
+    restart: unless-stopped
+    volumes:
+      # Optional: persist output storage or cached model weights outside the container
+      - audio_outputs:/app/output_storage
+
+volumes:
+  audio_outputs:
